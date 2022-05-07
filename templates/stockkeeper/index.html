@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Stock Keeper{% endblock %}
+
+{% block content %}
+
+{% if stock_areas %}
+    <ul>
+    {% for stock_area in stock_areas %}
+    <li><a href="/stockkeeper/{{ stock_area.id }}/">{{ stock_area.storage_area_name }} ({{ stock_area.parent_area }}/{{ stock_area.storage_area_type }})</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No stock areas are available.</p>
+{% endif %}
+
+{% endblock %}
