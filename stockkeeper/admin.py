@@ -4,9 +4,11 @@ from django.contrib import admin
 from .models import(ComponentMeasurementUnit,
                     StorageArea,
                     StorageAreaType,
-                    Component)
+                    Component,
+                    ComponentType)
 
 admin.site.register(ComponentMeasurementUnit)
 admin.site.register(StorageArea)
 admin.site.register(StorageAreaType)
 admin.site.register(Component)
+admin.site.register(ComponentType)

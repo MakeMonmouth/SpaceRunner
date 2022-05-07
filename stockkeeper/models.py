@@ -25,11 +25,19 @@ class ComponentMeasurementUnit(ExportModelOperationsMixin('ComponentMeasurementU
     def __str__(self):
         return self.unit_name
 
+class ComponentType(ExportModelOperationsMixin('ComponentType'), models.Model):
+    name = models.CharField(max_length=200)
+    description = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.name
+
 class Component(ExportModelOperationsMixin('Component'), models.Model):
     name = models.CharField(max_length=200)
     sku = models.CharField(max_length=100)
     mpn = models.CharField(max_length=100, null=True, blank=True)
     upc = models.IntegerField(null=True, blank=True)
+    component_type = models.ForeignKey(ComponentType, on_delete=models.CASCADE)
     storage_area = models.ManyToManyField(StorageArea)
     measurement_unit = models.ForeignKey(ComponentMeasurementUnit, on_delete=models.CASCADE)
     qty = models.IntegerField(default=0, validators=[MinValueValidator(0)])
