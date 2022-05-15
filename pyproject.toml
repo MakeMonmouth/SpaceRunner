@@ -9,6 +9,7 @@ license = "MIT-Modern-Variant"
 python = "^3.9"
 Django = "^4.0.4"
 django-prometheus = "^2.2.0"
+django-bootstrap-v5 = "^1.0.11"
 
 [tool.poetry.dev-dependencies]
 

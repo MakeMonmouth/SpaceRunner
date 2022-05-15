@@ -1,4 +1,5 @@
 from django.conf import settings # import the settings file
+from django.apps import apps # Import the installed apps
 
 def setting_vars(request):
     # return the value you want as a dictionnary. you may add multiple values in there.
@@ -15,3 +16,4 @@ def setting_vars(request):
         settings_vars.update({"HEADER_CTA2_LINK": settings.HEADER_CTA2_LINK})
         settings_vars.update({"HEADER_CTA2_TEXT": settings.HEADER_CTA2_TEXT})
     return settings_vars
+

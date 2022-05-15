@@ -4,10 +4,11 @@
 
 {% block content %}
 
-{% if stock_areas %}
+{% if component_types %}
+<p>Stock Categories</p>
     <ul>
-    {% for stock_area in stock_areas %}
-    <li><a href="/stockkeeper/{{ stock_area.id }}/">{{ stock_area.storage_area_name }} ({{ stock_area.parent_area }}/{{ stock_area.storage_area_type }})</a></li>
+    {% for component_type in component_types %}
+    <li><a href="/stockkeeper/{{ component_type.id }}/" alt="{{ component.description }}">{{ component_type.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
