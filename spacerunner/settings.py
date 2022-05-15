@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap5',
+    'bootstrap4',
     'accounts',
     'members',
     'stockkeeper'
@@ -67,6 +67,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'spacerunner.context_processors.setting_vars',
+                'spacerunner.context_processors.registered_user_count',
+                'spacerunner.context_processors.appname',
                 'stockkeeper.context_processors.component_types',
             ],
         },

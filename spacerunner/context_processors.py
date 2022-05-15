@@ -1,5 +1,5 @@
 from django.conf import settings # import the settings file
-from django.apps import apps # Import the installed apps
+from accounts.models import CustomUser as User
 
 def setting_vars(request):
     # return the value you want as a dictionnary. you may add multiple values in there.
@@ -17,3 +17,14 @@ def setting_vars(request):
         settings_vars.update({"HEADER_CTA2_TEXT": settings.HEADER_CTA2_TEXT})
     return settings_vars
 
+def registered_user_count(request):
+   return { 'registered_users' : User.objects.all().count() }
+
+def appname(request):
+    app_name = request.path_info.split("/")[1]
+    if app_name == "":
+        app_name = settings.SITE_NAME
+    else:
+        app_name = app_name.capitalize()
+
+    return {'appname': app_name}

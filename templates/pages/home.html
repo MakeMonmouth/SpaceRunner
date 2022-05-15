@@ -10,6 +10,36 @@ Welcome to {{ SITE_NAME }}
 {% block content %}
 {% if request.user.is_authenticated %}
 <!-- AUTHENTICATED USER -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Active Memberships</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <p class="text-xl">{{ registered_users }}</p>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <div class="col-lg-3">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Members currently in the space</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <p class="text-xl">0</p>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+</div>
 <!-- END AUTHENTICATED USER -->
 {% else %}
 <!-- UNAUTHENTICATED USER -->
