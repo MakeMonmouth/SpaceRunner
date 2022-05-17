@@ -43,6 +43,41 @@ Welcome to {{ SITE_NAME }}
 <!-- END AUTHENTICATED USER -->
 {% else %}
 <!-- UNAUTHENTICATED USER -->
+<p>{{ TAG_LINE }}</p>
+<div class="container-fluid">
+    <div class="card-deck">
+        {% for membership in memberships %}
+        {% if membership.membership_is_visible is True %}
+        <div class="card card-outline card-info">
+            <div class="card-header">
+                <h3 class="card-title">{{ membership.membership_title }}</h3>
+                <!-- /.card-header -->
+            </div>
+            <div class="card-body">
+                <p>{{ membership.membership_description | linebreaks }}</p>
+                <dl class="row">
+                    {% for benefit in membership.membershipbenefit_set.all %}
+                    <dt class="col-sm-3">{{ benefit.benefit_title }}</dt>
+                    <dd class="col-sm-9">{{ benefit.benefit_details | linebreaks}}</dd>
+                    {% endfor %}
+                </dl>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <p class="text-xl">
+                {% if membership.membership_monthly_cost != 0 %}
+                £{{ membership.membership_monthly_cost|floatformat:-2 }}/month
+                {% else %}
+                FREE
+                {% endif %}</p>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
 <!-- END UNAUTHENTICATED USER -->
 {% endif %}
 {% endblock %}

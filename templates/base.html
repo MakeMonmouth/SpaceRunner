@@ -49,6 +49,7 @@
                 </a>
 
                 <div class="sidebar">
+            {% if user.is_authenticated is True %}
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
@@ -69,6 +70,7 @@
                                 </a>
                             </li>
                         </ul>
+            {% endif %}
                     </nav>
 
                 </div>

@@ -18,6 +18,7 @@ class MembershipType(models.Model):
     membership_description = models.CharField(max_length=100)
     membership_monthly_cost = models.FloatField()
     membership_annual_discount_percentage = models.IntegerField(null=True,blank=True)
+    membership_is_visible = models.BooleanField("Should we list this membership on the website?", default=True)
 
     def __str__(self):
         return self.membership_title
@@ -28,7 +29,7 @@ class MembershipBenefit(models.Model):
     membership_type = models.ManyToManyField(MembershipType)
 
     def __str__(self):
-        return self.benefit_title
+        return f"{ self.benefit_title } - { self.benefit_details }"
 
 class UserMembership(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
