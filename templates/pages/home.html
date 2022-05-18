@@ -39,6 +39,33 @@ Welcome to {{ SITE_NAME }}
             <!-- /.card -->
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Components Available</h3>
+                    <!-- /.card-header -->
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                    {% for ct in component_types %}
+                    <li
+                        class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                        <a href="/stockkeeper/categories/{{ct.id}}">{{ ct.name}}</a>
+                        <span
+                            class="badge badge-primary badge-pill">
+                            {{ ct.qty }}
+                        </span>
+                    </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
 </div>
 <!-- END AUTHENTICATED USER -->
 {% else %}
