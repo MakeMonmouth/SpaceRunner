@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware',
 ]
 
 ROOT_URLCONF = 'spacerunner.urls'
@@ -141,12 +143,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
+# Prometheus Configuration
+PROMETHEUS_METRIC_NAMESPACE=os.getenv("SPACERUNNER_METRIC_NAMESPACE", "spacerunner")
+
 # Customisation
-SITE_NAME = "Space Runner"
-TAG_LINE = "The perfect tool to manage your Maker, Hack, or Other Space"
-HEADER_BACKGROUND_IMAGE = "https://images.unsplash.com/photo-1516783154360-123b392d0833"
-HEADER_BACKGROUND_ALT_TEXT = "Scrapbooking Workplace by Vladimir Proskurovskiy, available from Unsplash.com"
-HEADER_CTA1_LINK = "/memberships"
-HEADER_CTA1_TEXT = "Become a member"
-HEADER_CTA2_LINK = "/stockkeeper"
-HEADER_CTA2_TEXT = "Explore the Stores"
+SITE_NAME = os.getenv("SPACERUNNER_SITE_NAME", "Space Runner")
+TAG_LINE = os.getenv("SPACERUNNER_TAG_LINE", "The perfect tool to manage your Maker, Hack, or Other Space")
