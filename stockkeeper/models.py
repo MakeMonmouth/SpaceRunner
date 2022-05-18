@@ -33,6 +33,7 @@ class ComponentMeasurementUnit(ExportModelOperationsMixin('ComponentMeasurementU
 class ComponentType(ExportModelOperationsMixin('ComponentType'), MPTTModel):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=250)
+    shortcode = models.CharField(max_length=3)
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
     class MPTTMeta:
@@ -84,7 +85,6 @@ class ComponentPrice(ExportModelOperationsMixin('Vendor'), models.Model):
 
 class Component(ExportModelOperationsMixin('Component'), models.Model):
     name = models.CharField(max_length=200)
-    sku = models.CharField(max_length=100)
     mpn = models.CharField(max_length=100, null=True, blank=True)
     upc = models.IntegerField(null=True, blank=True)
     prices = models.ForeignKey(ComponentPrice, on_delete=models.CASCADE, null=True, blank=True)
