@@ -10,6 +10,8 @@ python = "^3.9"
 Django = "^4.0.4"
 django-prometheus = "^2.2.0"
 django-bootstrap4 = "^22.1"
+django-mptt = "^0.13.4"
+django-jazzmin = "^2.5.0"
 
 [tool.poetry.dev-dependencies]
 
