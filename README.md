@@ -10,4 +10,4 @@ Clone this repository, and then run `poetry install` to install everything you n
 
 Once all the dependencies are installed, `poetry run ./manage.py runserver` will start a local development server on http://localhost:8000 using a SQLite database.
 
-Full instructions on how to deploy a production setup of this project can be found [in the documentation](https://spacerunner.readthedocs.io).
+Full instructions on how to deploy a production setup of this project can be found [in the documentation](https://space-runner.readthedocs.io).
