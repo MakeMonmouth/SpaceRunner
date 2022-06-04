@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Space Runner
+  description: A plaform to help Maker Spaces and Hack Spaces with member management and other things.
+  annotations:
+    backstage.io/techdocs-ref: dir:docs/
+    github.com/project-slug: 'makemonmouth/spacerunnner'
+    grafana/tag-selector: "spacerrunner"
+    sentry.io/project-slug: "spacerunner"
+    prometheus.io/alert: SpaceRunnerHighErrorRate
+spec:
+  type: service
+  owner: matt@doics.co
+  lifecycle: production
