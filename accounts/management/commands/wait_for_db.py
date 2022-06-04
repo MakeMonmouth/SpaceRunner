@@ -4,7 +4,7 @@ Django command to wait for the database to be available.
 import time
 import os
 
-if os.getenv('MVENTORY_DATABASE_ENGINE') == "postgresql":
+if os.getenv('SPACERUNNER_DATABASE_ENGINE') == "postgresql":
     from psycopg2 import OperationalError as DBOpErr
 
 from django.db.utils import OperationalError
