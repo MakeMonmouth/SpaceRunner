@@ -2,8 +2,8 @@
 
 set -eux
 
-#python manage.py wait_for_db
-#python manage.py collectstatic --noinput
+poetry run python manage.py wait_for_db
+poetry run python manage.py collectstatic --noinput
 poetry run python manage.py migrate
 
 script="
