@@ -138,3 +138,6 @@ GitHub.sublime-settings
 
 #
 *.swp
+
+# Static files
+staticfiles/*
