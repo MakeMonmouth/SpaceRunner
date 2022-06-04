@@ -307,12 +307,39 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "treap"
+version = "2.0.10"
+description = "Python implementation of treaps"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "tzdata"
 version = "2022.1"
 description = "Provider of IANA time zone data"
 category = "main"
 optional = false
 python-versions = ">=2"
+
+[[package]]
+name = "uwsgi"
+version = "2.0.20"
+description = "The uWSGI server"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "uwsgi-metrics"
+version = "1.1.5"
+description = "Metrics for uWSGI services"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+treap = "*"
 
 [[package]]
 name = "watchdog"
@@ -340,7 +367,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "2f91df6a8aa3e15574328503589c56111af9a80ea8dce24665725c4efa109ce8"
+content-hash = "3b6c00736f75b5111d41e057ff2f8ceb5c8585223887e7b5d8cd81559aa32bbc"
 
 [metadata.files]
 asgiref = [
@@ -516,9 +543,19 @@ sqlparse = [
     {file = "sqlparse-0.4.2-py3-none-any.whl", hash = "sha256:48719e356bb8b42991bdbb1e8b83223757b93789c00910a616a071910ca4a64d"},
     {file = "sqlparse-0.4.2.tar.gz", hash = "sha256:0c00730c74263a94e5a9919ade150dfc3b19c574389985446148402998287dae"},
 ]
+treap = [
+    {file = "treap-2.0.10.tar.gz", hash = "sha256:88fe8b9fea23a6c9662bb566cb37ad6eda30a31293b3f2a939d61611d45f1ab7"},
+]
 tzdata = [
     {file = "tzdata-2022.1-py2.py3-none-any.whl", hash = "sha256:238e70234214138ed7b4e8a0fab0e5e13872edab3be586ab8198c407620e2ab9"},
     {file = "tzdata-2022.1.tar.gz", hash = "sha256:8b536a8ec63dc0751342b3984193a3118f8fca2afe25752bb9b7fffd398552d3"},
+]
+uwsgi = [
+    {file = "uwsgi-2.0.20.tar.gz", hash = "sha256:88ab9867d8973d8ae84719cf233b7dafc54326fcaec89683c3f9f77c002cdff9"},
+]
+uwsgi-metrics = [
+    {file = "uwsgi_metrics-1.1.5-py26-none-any.whl", hash = "sha256:5cbea65c28ed04c00516f411d182240d1c0bfb54da7dbf34dbea200ec238edaa"},
+    {file = "uwsgi_metrics-1.1.5.tar.gz", hash = "sha256:10481002d0197af62b730ad1395ed60ef3fb02e39f663599ca6b686a402dd832"},
 ]
 watchdog = [
     {file = "watchdog-2.1.8-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:676263bee67b165f16b05abc52acc7a94feac5b5ab2449b491f1a97638a79277"},
