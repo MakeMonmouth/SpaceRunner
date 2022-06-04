@@ -85,12 +85,27 @@ WSGI_APPLICATION = 'spacerunner.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Get Database Settings from the Environment
+db_engine_name = os.getenv('SPACERUNNER_DB_ENGINE') or "sqlite3"
+DB_ENGINE = f"django_prometheus.db.backends.{db_engine_name}"
+
+if db_engine_name == "sqlite3":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django_prometheus.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'data/spacerunner.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': DB_ENGINE,
+            'NAME': os.getenv('SPACERUNNER_DB_NAME'),
+            'HOST': os.getenv('SPACERUNNER_DB_HOST'),
+            'USER': os.getenv('SPACERUNNER_DB_USER'),
+            'PASSWORD': os.getenv('SPACERUNNER_DB_PASSWORD'),
+        }
+    }
 
 
 # Password validation
