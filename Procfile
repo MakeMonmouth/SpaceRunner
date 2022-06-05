@@ -1,1 +1,1 @@
-web: uwsgi spacerunner.wsgi
+web: gunicorn spacerunner.wsgi
