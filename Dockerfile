@@ -15,10 +15,9 @@ COPY . /opt/app
 
 ENV PYTHONPATH=${PYTHONPATH}:${PWD} 
 RUN pip3 install poetry
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-dev
+RUN pip3 install -r requirements.txt
 RUN rm -rf /opt/app/data/*.sqlite3
 
 EXPOSE 8000
 
-ENTRYPOINT ["poetry", "run", "./scripts/runserver.sh"]
+ENTRYPOINT ["./scripts/runserver.sh"]
