@@ -14,7 +14,6 @@ WORKDIR /opt/app
 COPY . /opt/app
 
 ENV PYTHONPATH=${PYTHONPATH}:${PWD} 
-RUN pip3 install poetry
 RUN pip3 install -r requirements.txt
 RUN rm -rf /opt/app/data/*.sqlite3
 
