@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--+tpl-bxn5kw&n1=&hc&$2797rpdj7#pguy-&bz(*a4+wuqa1^'
+SECRET_KEY = os.getenv("SPACERUNNER_SECRET_KEY", 'django-insecure--+tpl-bxn5kw&n1=&hc&$2797rpdj7#pguy-&bz(*a4+wuqa1^')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("SPACERUNNER_DEBUG", False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -85,12 +85,27 @@ WSGI_APPLICATION = 'spacerunner.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Get Database Settings from the Environment
+db_engine_name = os.getenv('SPACERUNNER_DB_ENGINE') or "sqlite3"
+DB_ENGINE = f"django_prometheus.db.backends.{db_engine_name}"
+
+if db_engine_name == "sqlite3":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django_prometheus.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'data/spacerunner.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': DB_ENGINE,
+            'NAME': os.getenv('SPACERUNNER_DB_NAME'),
+            'HOST': os.getenv('SPACERUNNER_DB_HOST'),
+            'USER': os.getenv('SPACERUNNER_DB_USER'),
+            'PASSWORD': os.getenv('SPACERUNNER_DB_PASSWORD'),
+        }
+    }
 
 
 # Password validation
