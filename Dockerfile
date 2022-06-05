@@ -7,7 +7,9 @@ ENV SPACERUNNER_ADMIN_PASS=""
 ENV SPACERUNNER_ADMIN_EMAIL=""
 
 RUN apt update && apt upgrade -y
-RUN apt install -y gcc libmariadbclient-dev libsqlite3-dev libpq-dev libffi-dev
+RUN apt install -y gcc libmariadbclient-dev libsqlite3-dev \
+    libpq-dev build-essential libssl-dev libffi-dev \
+    python3-dev cargo
 WORKDIR /opt/app
 COPY . /opt/app
 
